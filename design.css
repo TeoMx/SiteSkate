@@ -1,7 +1,27 @@
 /* Navbar */
 
-
+@import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Raleway:500&display=swap');
+@font-face {
+    font-family: "Britanica";
+    src: url("/fonts/Britanica.woff") format("woff");
+}
+
+:root{
+    --main-color: #CA4C34;
+}
+
+body {
+    background-color: #000;
+}
+
+li, a, button {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+}
 
 section {
     display: flex;
@@ -11,16 +31,15 @@ section {
 }
 
 section h3.title {
-    color: #00baff;
-    text-transform: capitalize;
-    font: bold 32px 'Raleway', sans-serif;
-    margin-bottom: 30px;
+    color: var(--main-color);
+    font: 50px 'Britanica';
+    margin: 20px 0;
     text-align: center;
 }
 
 section p {
     max-width: 800px;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
     text-align: center;
     padding: 0 20px;
     line-height: 2;
@@ -29,55 +48,56 @@ section p {
 }
 
 ul.grid {
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-hr {
-    width: 150px;
-    height: 2px;
-    border-radius: 1px;
-    border: 0;
-    background-color: #00baff;
-    margin-bottom: 20px;
+ul.grid > .label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-* { 
+
+.label > p {
+    width: fit-content;
+    color: #000;
+    background-color: #fff;
+    padding: 0 10px;
+    margin-bottom: 2px;
+}
+
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #2c2c2c;
-}
-
-li, a, button {
-    font-family: "Raleway", sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: white;
-    text-decoration: none;
-    
 }
 
 header {
+    position: fixed;
+    top: 40px;
+    left: 40px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 10%;
+    flex-direction: column;
     z-index: 10;
 }
+
 .logo {
     cursor: pointer;
     margin-left: -10px;
 }
 
 .nav__links {
+    display: flex;
+    flex-direction: column;
     list-style: none;
 }
 
 .nav__links li {
     display: inline-block;
-    padding: 0px 20px;
-    margin: auto;
+    padding-bottom: 10px;
 }
 
 .nav__links li a {
@@ -85,12 +105,12 @@ header {
 }
 
 .nav__links li a:hover {
-    color: #00baff;
+    color: var(--main-color);
 }
 
 button {
     padding: 9px 25px;
-    background-color: #00baff;
+    background-color: var(--main-color);
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -98,7 +118,7 @@ button {
 }
 
 button:hover {
-    background-color: #008fc4;
+    background-color: var(--main-color);
 }
 
 @media (max-width: 1000px) {
@@ -127,47 +147,69 @@ button:hover {
     justify-content: center;
     position: relative;
     min-height: 100vh;
-    color: #000 ;
     text-align: center;
 }
 
-.hero .background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 110%;
-    background-size: cover;
-    z-index: 1;
+.hero h1 {
+    position: relative;
+    font: 200px 'Britanica';
+    z-index: 2;
+    color: #fff;
 }
 
-.hero h1 {
-    background-color: rgba(255, 255, 255, 0.5);
-    text-transform: capitalize;
-    font: bold 32px 'Raleway', sans-serif;
-    margin-bottom: 20px;
-    margin-top: 220px;
+.hero h1 > span {
+    position: absolute;
+    bottom: -20px;
+    right: -90px;
+    font: 60px 'Covered By Your Grace', cursive;
     z-index: 2;
-
+    color: var(--main-color);
+    transform: rotate(7deg);
 }
 
 .hero h3 {
-    background-color: rgba(255, 255, 255, 0.5);
-    text-transform: capitalize;
-    font: bold 32px 'Raleway', sans-serif;
-    margin-bottom: 250px;
+    font: 25px 'Raleway';
     z-index: 2;
+    color: #fff;
+    padding: 5%;
 }
+
+.hero__image {
+    position: absolute;
+    top: 35%;
+    left: 25%;
+    width: 20vw;
+    z-index: -1;
+    transform: translate(-50%, -50%) rotate(-4deg);
+    border-radius: 20px;
+}
+
+.hero__arrow {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: move 1s infinite;
+}
+
+@keyframes move {
+    0% {
+        bottom: 5%;
+    }
+
+    50% {
+        bottom: 0%;
+    }
+
+    100% {
+        bottom: 5%;
+    }
+}
+
 
 @media (max-width: 1000px) {
     section {
         padding: 100px 50px;
-    }
-}
-
-@media (max-width: 600px) {
-    section {
-        padding: 80px 30px;
     }
 }
 
@@ -180,6 +222,32 @@ button:hover {
     }
     .hero h3 {
         font-size: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    section {
+        padding: 80px 30px;
+    }
+    header {
+        padding: 0;
+    }
+    .hero {
+        min-height: 100vh;
+    }
+    .hero__image {
+        width: 50vw;
+    }
+    .hero h1 {
+        font-size: 80px;
+    }
+    .hero h1 > span {
+        font-size: 30px;
+        bottom: 70px;
+        right: -30px;
+    }
+    .hero h3 {
+        font-size: 20px;
     }
 }
 
